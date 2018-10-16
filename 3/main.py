@@ -9,6 +9,9 @@ MAX_K = 100
 SERIES = 100
 
 
+def print(a):
+    pass
+
 def estimate_uniform(k):
     res = sum([random.uniform(0, THETA) ** k for _ in range(EXPERIMENTS)]) / EXPERIMENTS
     return ((k + 1) * res) ** (1 / k)
@@ -31,5 +34,6 @@ def do(estimate_param, plot_name):
 
 
 if __name__ == "__main__":
+    print(3, 4)
     do(estimate_uniform, 'uniform.png')
     do(estimate_exp, 'exponential.png')
