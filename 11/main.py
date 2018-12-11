@@ -8,17 +8,17 @@ C = 1 / (2 * A + 2 * np.exp(-A))
 def generate1():
     # Обратная функция
     # F(x) = ce^{-x}, x <= -A
-    #      = ce^{-A} + cx, -A < x < A
+    #      = ce^{-A} + c(x + A), -A < x < A
     #      = 1 - ce^{-x}, x >= A
     # G(y) = ln(y / C), y <= ce^{-A}
-    #      = y/c - e^{-A}, ce^{-A} < y < ce^{-A} + 2cA
+    #      = y/c - e^{-A} - A, ce^{-A} < y < ce^{-A} + 2cA
     #      = ln(c / (1 - y)), y >= ce^{-A} + 2cA
     y = np.random.uniform(0, 1)
     if y < C * np.exp(-A):
         return np.log(y / C)
     if y > C * np.exp(-A) + 2 * C * A:
         return np.log(C / (1 - y))
-    return y / C - np.exp(-A)
+    return y / C - np.exp(-A) - A
 
 
 def generate2():
